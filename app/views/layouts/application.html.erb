@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hogebooks</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div id="logo">Hogebook</div>
+        <% if user_signed_in? %>
+          <ul class="header-right">
+            <li><%= link_to "ユーザー一覧", users_path %></li>
+            <li><%= link_to "新規投稿", new_tweet_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        <% else %>
+          <ul class="header-right">
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          </ul>
+        <% end %>
+      </div>
+    </header>
+    <div class="box_area">
+      <p><%= notice %></p>
+      <p><%= alert %></p>
+    <%= yield %>
+    </div>
+  </body>
+</html>
