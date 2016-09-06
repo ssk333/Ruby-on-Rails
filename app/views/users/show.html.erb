@@ -1,4 +1,14 @@
 <p id="notice"><%= notice %></p>
+<section>
+  <span class="label">プロフィール画像</span>
+  <h3 class="user-info">
+    <% if user_signed_in? %>
+      <% if @user.image %>
+        <%= image_tag "/user_images/#{@user.image}", class: 'img_size' %>
+      <% end %>
+    <% end %>
+  </h3>
+</section>
 
 <p>
   <strong>Name:</strong>
